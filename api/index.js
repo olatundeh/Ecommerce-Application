@@ -17,6 +17,10 @@ mongoose.connect(process.env.MONGOOSEDB_URL).then(()=>console.log("db connected"
 //SZAN2QbVEJjJXiaR
 //mongodb+srv://harounola:SZAN2QbVEJjJXiaR@cluster0.yulhc.mongodb.net/REACT-NODE-APP
 
+const databaseSeeder = require('./databaseSeeder')
+//database seeder routes
+app.use('/api/seed', databaseSeeder)
+
 app.listen(PORT, () => {
     console.log(`server listening on port ${PORT}`);
 });
