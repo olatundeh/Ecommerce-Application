@@ -11,6 +11,7 @@ userRoute.post('/login',
             res.json({
                 _id: user.id,
                 name: user.name,
+                email: user.email,
                 isAdmin: user.isAdmin,
                 token: null,
                 createdAt: user.createdAt
