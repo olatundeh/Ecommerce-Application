@@ -24,4 +24,4 @@ userRoute.post('/login',
     })
 );
 
-module.export = userRoute;
+module.exports = userRoute;
