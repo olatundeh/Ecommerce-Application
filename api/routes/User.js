@@ -56,4 +56,12 @@ userRoute.post('/',
     })
 );
 
+//Profile route
+userRoute.get('/profile',
+    AsyncHandler(async (req, res) => {
+        const user = await User.findById(req.user._id);
+        res.send('Profile Route');
+    })
+);
+
 module.exports = userRoute;
