@@ -1,8 +1,8 @@
 const express = require("express")
 const userRoute = express.Router();
 const AsyncHandler = require("express-async-handler");
-const User = require('../models/User')
-const generateToken = require('../tokenGenerate')
+const User = require('../models/User');
+const generateToken = require('../tokenGenerate');
 
 userRoute.post('/login',
     AsyncHandler(async (req, res) => {
@@ -60,7 +60,18 @@ userRoute.post('/',
 userRoute.get('/profile',
     AsyncHandler(async (req, res) => {
         const user = await User.findById(req.user._id);
-        res.send('Profile Route');
+        if(user){
+            res.json({
+                _id: user.id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                createdAt: user.createdAt
+            })
+        }else{
+            res.status(404);
+            throw new Error('User Not Found');
+        }
     })
 );
 
