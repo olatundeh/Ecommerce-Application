@@ -14,7 +14,7 @@ userRoute.post('/login',
                 name: user.name,
                 email: user.email,
                 isAdmin: user.isAdmin,
-                token: null,
+                token: generateToken(user._id),
                 createdAt: user.createdAt
             })
 
