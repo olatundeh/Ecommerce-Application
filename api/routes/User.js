@@ -3,6 +3,7 @@ const userRoute = express.Router();
 const AsyncHandler = require("express-async-handler");
 const User = require('../models/User');
 const generateToken = require('../tokenGenerate');
+const protect = require('../middleware/Auth');
 
 userRoute.post('/login',
     AsyncHandler(async (req, res) => {
@@ -58,6 +59,7 @@ userRoute.post('/',
 
 //Profile route
 userRoute.get('/profile',
+    protect,
     AsyncHandler(async (req, res) => {
         const user = await User.findById(req.user._id);
         if(user){
