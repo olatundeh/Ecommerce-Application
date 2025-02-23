@@ -42,7 +42,7 @@ orderRoute.put('/:id/payment', protect,
                 email_address: req.body.email_address
             }
             const updatedOrder = await order.save();
-            res.json(updatedOrder);
+            res.status(200).json(updatedOrder);
         } else {
             res.status(404);
             throw new Error('Order Not Found');
