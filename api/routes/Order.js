@@ -50,4 +50,13 @@ orderRoute.put('/:id/payment', protect,
     })
 );
 
+//get order list
+orderRoute.get('/', protect,
+    AsyncHandler(async (req, res) => {
+        const orders = await Order.find({ user: req.user._id }).sort({ _id: -1 });
+        res.json(orders);
+    })
+);
+
+
 module.exports = orderRoute;
