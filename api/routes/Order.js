@@ -54,7 +54,12 @@ orderRoute.put('/:id/payment', protect,
 orderRoute.get('/', protect,
     AsyncHandler(async (req, res) => {
         const orders = await Order.find({ user: req.user._id }).sort({ _id: -1 });
-        res.json(orders);
+        if(orders){
+            res.status(200).json(orders);
+        }else{
+            res.status(404);
+            throw new Error('Orders Not Found');
+        }
     })
 );
 
