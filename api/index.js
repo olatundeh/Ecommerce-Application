@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const products = require("./data/Products");
 dotenv.config();
 const PORT = process.env.PORT
+const cors = require("cors")
 const mongoose = require("mongoose")
 
 //connect db
@@ -12,15 +13,12 @@ mongoose.connect(process.env.MONGOOSEDB_URL).then(()=>console.log("db connected"
     error;
 })
 
-//harounola
-//SZAN2QbVEJjJXiaR
-//mongodb+srv://harounola:SZAN2QbVEJjJXiaR@cluster0.yulhc.mongodb.net/REACT-NODE-APP
-
 const databaseSeeder = require('./databaseSeeder');
 const userRoute = require('./routes/User');
 const productRoute = require('./routes/Product');
 const orderRoute = require('./routes/Order');
 app.use(express.json())
+app.use(cors())
 
 //database seeder routes
 app.use('/api/seed', databaseSeeder)
