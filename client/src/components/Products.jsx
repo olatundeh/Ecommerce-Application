@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { productListAction } from "../Redux/Actions/Product";
 
 const Products = () => {
@@ -31,14 +32,14 @@ const Products = () => {
                                                         <div className="mt-4 flex justify-between">
                                                             <div>
                                                                 <h3 className="text-sm text-gray-700">
-                                                                    <a href="#">
+                                                                    <Link to={`/product/${product._id}`}>
                                                                         <span aria-hidden="true" className="absolute inset-0"></span>
-                                                                        Basic Tee
-                                                                    </a>
+                                                                        {product.name}
+                                                                    </Link>
                                                                 </h3>
-                                                                <p className="mt-1 text-sm text-gray-500">Black</p>
+                                                                <p className="mt-1 text-sm text-gray-500">Review Count: {product.numReview}</p>
                                                             </div>
-                                                            <p className="text-sm font-medium text-gray-900">$35</p>
+                                                            <p className="text-sm font-medium text-gray-900">${product.price}</p>
                                                         </div>
                                                     </div>
                                                 </div>
